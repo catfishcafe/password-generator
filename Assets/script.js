@@ -20,43 +20,79 @@
 //access a random index in that array
 //specifiy how many random indeces to access
 
-const lowerCase = 'abcdefghijklmnopqrstuvwxyz'.split('');
-const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const numbers = '0123456789'.split('');
-let specialChar = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'.split('');
-specialChar.push("'");
-
-// program to get a random item from an array
-
-function getRandomItem(specialChar) {
-
-  // get random index value
-  const specialCharRandomIndex = Math.floor(Math.random() * specialChar.length);
-
-  // get random item
-  const specialCharItems = specialChar[specialCharRandomIndex];
-
-//somehow multiply specialChar by the passwordLength variable
-
-  return item;
- 
+function generatePassword() {
+  //all user input in one object
+  const userInput = getUserInput();
+  const password = returnRandom(userInput);
+  return password;
 }
 
+// Next, the two functions used in generatePassword are defined:
 
-
-function generatePassword() {
-  let passwordLength = window.prompt(
+function getUserInput() {
+  const userInput = {};
+  userInput.passwordLength = window.prompt(
     'Enter desired password length (number of characters):'
     );
-  console.log(passwordLength * 3);
-
-  if (confirm("Include special characters? (OK = yes, cancel = no)") == true) {
-    // Function to fetch the random number of indices indicated
-    text = "You pressed OK!";
-  } else {
-    text = "You canceled!";
-  };
-  return 'hey';
+    //❌DON'T FORGET TO GET RID OF THIS CONSOLE LOG❌
+    console.log(userInput.passwordLength + ' characters');
+    userInput.includeSpecialChar = confirm("Include special characters? (OK = yes, cancel = no)");
+    //❌DON'T FORGET TO GET RID OF THIS CONSOLE LOG❌
+    console.log('Include special characters:' + userInput.includeSpecialChar);
+  return userInput;
 }
 
+function returnRandom(input) {
+  let password = '';
+  for (let i = 0; i < input.passwordLength; i++){
+    password = generateNextChar(password, input);
+  }
+  return password;
+}
+
+// Next are the arrays that will be used in the following functions:
+
+const lowerCase = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const number = '0123456789'.split('');
+const specialChar = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\''.split('');
+
+let lowerCaseRandomIndex = Math.floor(Math.random() * lowerCase.length);
+let lowerCaseItems = lowerCase[lowerCaseRandomIndex];
+
+let upperCaseRandomIndex = Math.floor(Math.random() * upperCase.length);
+let upperCaseItems = upperCase[upperCaseRandomIndex];
+
+let numberRandomIndex = Math.floor(Math.random() * number.length);
+let numberItems = number[numberRandomIndex];
+
+let specialCharRandomIndex = Math.floor(Math.random() * specialChar.length);
+let specialCharItems = specialChar[specialCharRandomIndex];
+
+//❌vvvvv THIS IS JUST A TEST vvvvv❌
+let all = [lowerCaseItems, upperCaseItems, numberItems, specialCharItems]
+for (i = 0; i < 4; i++){
+  console.log(all[i])
+}
+//❌^^^^^ THIS IS JUST A TEST ^^^^^❌
+
+let allItems = []
+
+if //user selects lower case, then push lowerCaseItems to allItems, etc
+
+function generateNextChar(password, input){
+  const lastChar = password === '' ? '' : password.at(-1);
+ 
+ 
+  const nextChar = lastChar === '' ? 'A' : 'a';
+  password = password + nextChar;
+  return password;
+
+     
+    
+  };
 })();
+
+//var regularExpression = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+// (?=.*specialChar) // means somewhere after is something from specialChar
