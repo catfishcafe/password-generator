@@ -108,4 +108,3 @@ function returnRandom(input) {
 
 //This is the end of the function that is this whole page, and then it is called.
 })();
-
